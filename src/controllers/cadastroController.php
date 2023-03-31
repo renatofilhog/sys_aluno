@@ -8,6 +8,7 @@ use src\Config;
 use src\handlers\pessoaHandler;
 use src\models\Materia;
 use src\models\Professor;
+use src\models\Turma;
 
 class cadastroController extends Controller
 {
@@ -30,7 +31,12 @@ class cadastroController extends Controller
 
     public function professorView(){
         loginHandler::verificaPermissao('M'); #If false vai para HOME
-        $this->renderIndependente('cadastro/professor', ['nome' => $_SESSION['loginInfos']['user']['nome'], 'nomeTela'=>'Cadastro de Professor']);
+        $this->renderIndependente('cadastro/professor',
+            [
+                'nome' => $_SESSION['loginInfos']['user']['nome'],
+                'nomeTela'=>'Cadastro de Professor'
+            ]
+        );
     }
 
     public function professorAction(){
@@ -50,4 +56,48 @@ class cadastroController extends Controller
             echo "Error: $retorno";
         }
     }
+
+
+    public function turmaView(){
+        loginHandler::verificaPermissao('M'); #If false vai para HOME
+        $this->renderIndependente('cadastro/turma',
+            [
+                'nome' => $_SESSION['loginInfos']['user']['nome'],
+                'nomeTela'=>'Cadastro de Turma',
+                'materias'=>Materia::retornaMaterias(),
+                'professores'=> Professor::retornaProfessores()
+            ]
+        );
+    }
+
+    public function turmaAction(){
+        loginHandler::verificaPermissao('M'); #If false vai para HOME
+
+        if(Turma::incluirTurma() == 1){
+            echo "Cadastro realizado com sucesso";
+            echo "<a href='".Config::BASE_DIR."/cadastro/turma'>Voltar</a>";
+        } else {
+            echo "Erro ao cadastrar";
+            echo "<a href='".Config::BASE_DIR."/cadastro/turma'>Voltar</a>";
+        }
+    }
+
+
+//    public function professorAction(){
+//        loginHandler::verificaPermissao('M'); #If false vai para HOME
+//        $lastId = pessoaHandler::inserePessoa('P');
+//        if(!$lastId){
+//            echo "Error: ".$_SESSION['errorMsg'];
+//            unset($_SESSION['errorMsg']);
+//            echo "<a href='".Config::BASE_DIR."/cadastro/professor'>Voltar</a>";
+//            exit();
+//        }
+//        $retorno = Professor::incluirProfessor($lastId);
+//        if($retorno == 1){
+//            echo "Cadastro realizado com sucesso";
+//            echo "<a href='".Config::BASE_DIR."/cadastro/professor'>Voltar</a>";
+//        } else {
+//            echo "Error: $retorno";
+//        }
+//    }
 }

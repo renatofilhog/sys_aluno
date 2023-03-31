@@ -16,10 +16,13 @@ $router->get('/logout','loginController@logout'); #Logout usuário
 /*
 * Cadastro (Side-Admin)
 */
+// -- Matéria
 $router->get('/cadastro/materia', 'cadastroController@materiaView'); #View
 $router->post('/cadastro/materia', 'cadastroController@materiaAction'); #Action
-// --
+// -- Professor
 $router->get('/cadastro/professor', 'cadastroController@professorView'); #View
 $router->post('/cadastro/professor', 'cadastroController@professorAction'); #Action
-
+// -- Turma
+$router->get('/cadastro/turma', 'cadastroController@turmaView'); #View
+$router->post('/cadastro/turma', 'cadastroController@turmaAction'); #Action
 

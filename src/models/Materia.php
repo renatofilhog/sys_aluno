@@ -28,4 +28,16 @@ class Materia
         }
         return false;
     }
+
+    public static function retornaMaterias(string $disponivel = "T"){
+        $pdo = Database::getInstance();
+        $stmt = $pdo->prepare("SELECT * FROM materia WHERE disponivel = :disponivel");
+        $stmt->bindValue(':disponivel',$disponivel);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        if (count($result)<1){
+            $result = ['id'=>0, 'descricao'=>'Sem matérias cadastradas'];
+        }
+        return $result;
+    }
 }

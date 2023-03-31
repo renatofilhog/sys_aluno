@@ -83,7 +83,7 @@
                     <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
-                            <span class="fa fa-search"></span>
+                            <span class="fa fa-magnifying-glass"></span>
                         </div>
                     </div>
                 </div>
@@ -91,28 +91,28 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item  active ">
-                    <a class="nav-link  active " href="./index.html">
+                    <a class="nav-link  active " href="<?=$base?>">
                         <i class="ni ni-tv-2 text-primary"></i> Dashboard
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="<?=$base?>/cadastro/materia">
-                        <i class="ni ni-planet text-blue"></i> Cadastro Matéria
+                        <i class="ni ni-books text-orange"></i> Cadastro Matéria
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="<?=$base?>/cadastro/professor">
-                        <i class="ni ni-single-02 text-yellow"></i> Cadastro Professor
+                        <i class="ni ni-hat-3 text-purple"></i> Cadastro Professor
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="<?=$base?>/cadastro/turma">
-                        <i class="ni ni-pin-3 text-orange"></i> Cadastro turma
+                        <i class="ni ni-collection text-pink"></i> Cadastro turma
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?=$base?>/logout">
-                        <i class="ni ni-key-25 text-info"></i> Logout (Sair)
+                        <i class="ni ni-user-run text-danger"></i> Logout (Sair)
                     </a>
                 </li>
             </ul>

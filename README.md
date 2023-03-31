@@ -1,6 +1,5 @@
 ## Changelog
-Realizado em seguinte ordem: 
-
+Alterações feitas antes da inicialização do repositório:
 * Feito tela de Login
 * Configurado Permissões
 * Menus de navegação para os 3 roles (ADMIN, PROFESSOR E ALUNO)
