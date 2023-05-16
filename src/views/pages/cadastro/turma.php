@@ -50,6 +50,7 @@
                                 <option data-neg="true" value="">Selecione a matéria</option>
                                 <!-- Inicio foreach options-->
                                 <?php foreach ($materias as $materia):?>
+
                                     <option value="<?=$materia['id']?>"><?=$materia['descricao']?></option>
                                 <?php endforeach;?>
                                 <!-- Fim foreach options-->

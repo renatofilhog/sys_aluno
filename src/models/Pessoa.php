@@ -7,7 +7,7 @@ class Pessoa
 {
 
     public function getRole(int $id){
-        $db = \core\Database::getInstance();
+        $db = Database::getInstance();
         $stmt = $db->prepare("SELECT pes.role FROM pessoa pes WHERE pes.id = :id ");
         $stmt->bindParam(":id",$id);
         $stmt->execute();
@@ -20,7 +20,7 @@ class Pessoa
 
     public function verificaLogin(string $email, string $senha){
         $senha = md5($senha);
-        $db = \core\Database::getInstance();
+        $db = Database::getInstance();
         $stmt = $db->prepare("SELECT * FROM pessoa pes WHERE pes.email = :email AND pes.senha = :senha");
         $stmt->bindParam(":email",$email);
         $stmt->bindParam(":senha",$senha);

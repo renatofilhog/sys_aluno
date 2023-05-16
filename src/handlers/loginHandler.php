@@ -15,8 +15,11 @@ class loginHandler {
         $this->usuario = $p->verificaLogin($email, $senha);
         if($this->usuario != null) {
             $this->setLogado($this->usuario);
+            echo "Chegou aqui";
+
             return ["user"=>$this->usuario,"logado"=>$this->logado];
         } else {
+            echo "Login ou senha inválidos <a href='/'>Voltar</a>";
             return null;
         }
     }

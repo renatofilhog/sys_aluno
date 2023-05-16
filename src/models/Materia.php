@@ -36,7 +36,7 @@ class Materia
         $stmt->execute();
         $result = $stmt->fetchAll();
         if (count($result)<1){
-            $result = ['id'=>0, 'descricao'=>'Sem matérias cadastradas'];
+            $result = [['id'=>"1", 'descricao'=>'Sem matérias cadastradas']];
         }
         return $result;
     }

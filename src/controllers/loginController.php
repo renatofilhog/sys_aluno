@@ -26,7 +26,6 @@ class loginController extends Controller
         $senhaRecebida = filter_input(INPUT_POST,'senha', FILTER_SANITIZE_ADD_SLASHES);
         $novoLogin = new loginHandler();
         $result = $novoLogin->processaLogin($emailRecebido, $senhaRecebida);
-
         if ($result['logado'] == 1){
             $_SESSION['loginInfos'] = $result;
             header("Location: ".Config::BASE_DIR."/");
