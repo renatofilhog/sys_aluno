@@ -6,6 +6,7 @@ use \core\Controller;
 use \src\handlers\loginHandler;
 use src\Config;
 use src\handlers\pessoaHandler;
+use src\models\Aluno;
 use src\models\Materia;
 use src\models\Professor;
 use src\models\Turma;
@@ -82,22 +83,33 @@ class cadastroController extends Controller
         }
     }
 
+    public function alunoView(){
+        loginHandler::verificaPermissao('P'); #If false vai para HOME
+        $this->renderIndependente('cadastro/aluno',
+            [
+                'nome' => $_SESSION['loginInfos']['user']['nome'],
+                'nomeTela'=>'Cadastro de Aluno'
+            ]
+        );
+    }
 
-//    public function professorAction(){
-//        loginHandler::verificaPermissao('M'); #If false vai para HOME
-//        $lastId = pessoaHandler::inserePessoa('P');
-//        if(!$lastId){
-//            echo "Error: ".$_SESSION['errorMsg'];
-//            unset($_SESSION['errorMsg']);
-//            echo "<a href='".Config::BASE_DIR."/cadastro/professor'>Voltar</a>";
-//            exit();
-//        }
-//        $retorno = Professor::incluirProfessor($lastId);
-//        if($retorno == 1){
-//            echo "Cadastro realizado com sucesso";
-//            echo "<a href='".Config::BASE_DIR."/cadastro/professor'>Voltar</a>";
-//        } else {
-//            echo "Error: $retorno";
-//        }
-//    }
+    public function alunoAction(){
+        loginHandler::verificaPermissao('P'); #If false vai para HOME
+        $lastId = pessoaHandler::inserePessoa('A');
+        if(!$lastId){
+            echo "Error: ".$_SESSION['errorMsg'];
+            unset($_SESSION['errorMsg']);
+            echo "<a href='".Config::BASE_DIR."/cadastro/aluno'>Voltar</a>";
+            exit();
+        }
+        $retorno = Aluno::incluirAluno($lastId);
+        if($retorno == 1){
+            echo "Cadastro realizado com sucesso";
+            echo "<a href='".Config::BASE_DIR."/cadastro/aluno'>Voltar</a>";
+        } else {
+            echo "Error: $retorno";
+        }
+    }
+
+
 }

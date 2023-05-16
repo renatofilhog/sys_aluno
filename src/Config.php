@@ -7,8 +7,8 @@ class Config {
     const DB_DRIVER = 'mysql';
     const DB_HOST = 'localhost';
     const DB_DATABASE = 'sysaluno';
-    CONST DB_USER = 'renato';
-    const DB_PASS = 'renato';
+    CONST DB_USER = 'root';
+    const DB_PASS = '';
 
     const ERROR_CONTROLLER = 'ErrorController';
     const DEFAULT_ACTION = 'index';

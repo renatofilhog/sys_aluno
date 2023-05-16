@@ -91,33 +91,32 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item  active ">
-                    <a class="nav-link  active " href="./index.html">
+                    <a class="nav-link  active " href="<?=$base?>/">
                         <i class="ni ni-tv-2 text-primary"></i> Dashboard
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="./examples/profile.html">
-                        <i class="ni ni-single-02 text-yellow"></i> Cadastro ALuno
+                    <a class="nav-link " href="<?=$base?>/cadastro/aluno">
+                        <i class="ni ni-single-02 text-yellow"></i> Cadastro Aluno
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="./examples/icons.html">
+                    <a class="nav-link " href="<?=$base?>/turma/aluno">
                         <i class="ni ni-planet text-blue"></i> Incluir Aluno
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="./examples/maps.html">
-                        <i class="ni ni-pin-3 text-orange"></i> Registro Atividade
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link " href="./examples/tables.html">
-                        <i class="ni ni-bullet-list-67 text-red"></i> Visualizar atividades
+                    <a class="nav-link " href="<?=$base?>/turma/visualizar">
+                        <i class="ni ni-bullet-list-67 text-red"></i> Visualizar Turmas
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./examples/login.html">
+                    <a class="nav-link " href="<?=$base?>/atividade/visualizar">
+                        <i class="ni ni-pin-3 text-orange"></i> Corrigir Atividades
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=$base?>/ranking/turma">
                         <i class="ni ni-key-25 text-info"></i> Rankings
                     </a>
                 </li>
@@ -135,7 +134,7 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div class="container-fluid">
             <!-- Brand -->
-            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="<?=$base?>/index.html"> Nome da TELA </a>
+            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="<?=$base?>/"><?=$nomeTela?></a>
 
             <!-- User -->
             <ul class="navbar-nav align-items-center d-none d-md-flex">
