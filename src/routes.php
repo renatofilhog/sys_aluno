@@ -42,3 +42,6 @@ $router->post('/turma/aluno', 'turmaController@incluirAlunoTurmaAction'); #Actio
 
 // -- Visualizar Turmas
 $router->get('/turma/visualizar','turmaController@visualizarTurmas');
+
+// -- Visualizar Turmas Aluno
+$router->get('/turma/visualizarA','turmaController@visualizarTurmasPorAluno');

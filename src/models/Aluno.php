@@ -42,8 +42,14 @@ class Aluno
     }
 
     public static function retornaAlunosTurma(int $id_turma, string $ativo = 'T'){
+
         $pdo = Database::getInstance();
-        $stmt = $pdo->prepare("SELECT a.id AS id_aluno, b.id AS id_pessoa, b.nome, b.email FROM aluno AS a LEFT JOIN pessoa AS b ON a.id_pessoa = b.id WHERE a.ativo = :ativo AND NOT EXISTS (SELECT 1 FROM alunos_turma AS at WHERE at.id_aluno = a.id AND at.id_turma = :id_turma)");
+        $stmt = $pdo->prepare("
+                SELECT a.id AS id_aluno, b.id AS id_pessoa, b.nome, b.email 
+                FROM aluno a LEFT JOIN pessoa b ON a.id_pessoa = b.id 
+                WHERE a.ativo = :ativo 
+                  AND NOT EXISTS (SELECT 1 FROM alunos_turma AS at WHERE at.id_aluno = a.id AND at.id_turma = :id_turma)
+                ");
         $stmt->bindValue(':id_turma',$id_turma);
         $stmt->bindValue(':ativo',$ativo);
         $stmt->execute();

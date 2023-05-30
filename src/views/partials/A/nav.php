@@ -96,7 +96,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="./examples/maps.html">
+                    <a class="nav-link " href="<?=$base?>/turma/visualizarA">
                         <i class="ni ni-pin-3 text-orange"></i> Ver turmas
                     </a>
                 </li>

@@ -19,7 +19,7 @@ class turmaController extends Controller
             [
                 'nome' => $_SESSION['loginInfos']['user']['nome'],
                 'nomeTela'=>'Cadastro de Turma',
-                'turmas'=> Turma::retornaTurmas()
+                'turmas'=> Turma::retornaTurmasByProfessor($_SESSION["loginInfos"]["user"]["id"])
             ]
         );
     }
@@ -74,15 +74,50 @@ class turmaController extends Controller
 
     public function visualizarTurmas(){
         loginHandler::verificaPermissao('P'); #IF false vai para HOME
-        $id_professor = 1;
         $turmas = [];
+        foreach (Turma::retornaTurmasByProfessor($_SESSION["loginInfos"]["user"]["id"]) as $item) {
+            $turmas[] = [
+                "id_turma" => $item['id_turma'],
+                "id_professor" => $item['id_professor'],
+                "nome_professor" => $item['nome_professor'],
+                "id_materia" => $item['id_materia'],
+                "nome_materia" => $item['nome_materia'],
+                "status" => $item['status'],
+                "qt_alunos" => 2,
+                "pontuacao_turma" => $item['pontuacao']
+            ];
+        }
         $this->renderIndependente(
             'visualizar/verTurmas',
             [
                 'nome' => $_SESSION['loginInfos']['user']['nome'],
                 'nomeTela' => "Visualizar Turmas",
                 'turmas'=>$turmas
+            ]
+        );
+    }
 
+    public function visualizarTurmasPorAluno(){
+        loginHandler::verificaPermissao('A');
+        $turmas = [];
+        foreach (Turma::retornaTurmasByAluno($_SESSION["loginInfos"]["user"]["id"]) as $item) {
+            $turmas[] = [
+                "id_turma" => $item['id_turma'],
+                "id_professor" => $item['id_professor'],
+                "nome_professor" => $item['nome_professor'],
+                "id_materia" => $item['id_materia'],
+                "nome_materia" => $item['nome_materia'],
+                "status" => $item['status'],
+                "tarefas_pendentes" => $item['tarefas_pendentes'],
+                "pontuacao_turma" => $item['pontuacao']
+            ];
+        }
+        $this->renderIndependente(
+            'visualizar/verTurmasAluno',
+            [
+                'nome' => $_SESSION['loginInfos']['user']['nome'],
+                'nomeTela' => "Visualizar Turmas",
+                'turmas'=>$turmas
             ]
         );
     }

@@ -17,7 +17,7 @@
                                 <th scope="col">Professor</th>
                                 <th scope="col">Matéria</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Alunos</th>
+                                <th scope="col">Tarefas Pendentes</th>
                                 <th scope="col">Pontuação</th>
                                 <th scope="col"></th>
                             </tr>
@@ -58,7 +58,7 @@
                                     </span>
                                     </td>
                                     <td>
-                                        <?=$turma['qt_alunos']?>
+                                        <?=$turma['tarefas_pendentes']?>
                                     </td>
                                     <td>
                                         <?=$turma['pontuacao_turma']?>
@@ -70,7 +70,6 @@
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                 <a class="dropdown-item" href="#">Ver Alunos</a>
-                                                <a class="dropdown-item" href="#">Registrar Atividade</a>
                                             </div>
                                         </div>
                                     </td>
