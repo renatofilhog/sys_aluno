@@ -96,6 +96,27 @@ class Turma {
         return $result;
     }
 
+    public static function retornaAlunosPorTurma(int $id_turma)
+    {
+        $pdo = Database::getInstance();
+        $stmt = $pdo->prepare("
+            SELECT 
+                aturma.pontuacao AS pontuacao_aluno
+                pessoa.nome AS nome_aluno
+            FROM alunos_turma aturma
+                JOIN aluno ON aluno.id = aturma.id_aluno
+                JOIN pessoa ON pessoa.id = aluno.id_pessoa
+            WHERE aturma.id_turma = :id_turma
+        ");
+        $stmt->bindValue(":id_turma",$id_turma);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        if (count($result)<1){
+            $result = ['id'=>0, 'nome'=>'Sem alunos cadastrados'];
+        }
+        return $result;
+    }
+
 
     public static function incluirAlunoTurma(){
         $id_aluno = filter_input(INPUT_POST,'id_aluno',FILTER_SANITIZE_ADD_SLASHES);

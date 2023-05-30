@@ -40,4 +40,21 @@ class Materia
         }
         return $result;
     }
+
+    public static function retornaNomeMateriaPorTurma($id_turma)
+    {
+        $pdo = Database::getInstance();
+        $stmt = $pdo->prepare("SELECT 
+            materia.descricao as nome_materia
+            FROM materia
+            JOIN turma ON id_turma = :id_turma
+            WHERE turma.ativo = 'T' AND materia.disponivel = 'T'
+        ");
+        $stmt->bindValue(":id_turma", $id_turma);
+        $stmt->execute();
+        $result = $stmt->fetch();
+        if(!$result){
+            $result = [['Sem Materia com turma']];
+        }
+    }
 }

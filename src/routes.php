@@ -45,3 +45,6 @@ $router->get('/turma/visualizar','turmaController@visualizarTurmas');
 
 // -- Visualizar Turmas Aluno
 $router->get('/turma/visualizarA','turmaController@visualizarTurmasPorAluno');
+
+// -- Visualizar alunos
+$router->get('/turma/visualizar/alunos/{id}', 'turmaController@visualizarAlunosPorTurma');

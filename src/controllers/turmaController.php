@@ -122,4 +122,28 @@ class turmaController extends Controller
         );
     }
 
+    public function visualizarAlunosPorTurma($id_turma)
+    {
+        loginHandler::verificaPermissao('P');
+        $alunos = [];
+
+        foreach (Turma::retornaAlunosPorTurma($id_turma['id']) as $item) {
+            $alunos[] = [
+                "nome_aluno" => $item['nome_aluno'],
+                "pontuacao_aluno" => $item['pontuacao_aluno']
+            ];
+        }
+
+        $this->renderIndependente(
+            'visualizar/verTurmasAluno',
+            [
+                'nome' => $_SESSION['loginInfos']['user']['nome'],
+                'nomeTela' => "Visualizar alunos",
+                'alunos'=>$alunos,
+                'nome_materia' => Materia::retornaNomeMateriaPorTurma($id_turma),
+                'nome_professor'
+            ]
+        );
+    }
+
 }

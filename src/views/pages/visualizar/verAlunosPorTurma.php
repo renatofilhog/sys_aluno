@@ -8,22 +8,20 @@
             <div class="col">
                 <div class="card shadow">
                     <div class="card-header border-0">
-                        <h3 class="mb-0">Turmas</h3>
+                        <h3 class="mb-0">Alunos Materia: | Professor: </h3>
                     </div>
                     <div class="table-responsive">
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col">Professor</th>
-                                <th scope="col">Matéria</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Alunos</th>
+                                <th scope="col"></th>
+                                <th scope="col">Aluno</th>
                                 <th scope="col">Pontuação</th>
                                 <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($turmas as $turma): ?>
+                            <?php foreach ($alunos as $aluno): ?>
                                 <tr>
                                     <th scope="row">
                                         <div class="media align-items-center">
@@ -31,37 +29,12 @@
 <!--                                                <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">-->
 <!--                                            </a>-->
                                             <div class="media-body">
-                                                <span class="mb-0 text-sm"><?=$turma['nome_professor']?></span>
+                                                <span class="mb-0 text-sm"><?=$aluno['nome_aluno']?></span>
                                             </div>
                                         </div>
                                     </th>
                                     <td>
-                                        <?=$turma['nome_materia']?>
-                                    </td>
-                                    <td>
-                                    <span class="badge badge-dot mr-4">
-                                    <?php
-                                        switch ($turma['status']){
-                                            case 1:
-                                                echo "<i class='bg-yellow'></i> Em andamento";
-                                            break;
-                                            case 2:
-                                                echo "<i class='bg-green'></i> Completo";
-                                            break;
-                                            case 3:
-                                                echo "<i class='bg-red'></i> Cancelado";
-                                            break;
-                                            case 4:
-                                                echo "<i class='bg-cyan'></i> Pausado";
-                                        }
-                                    ?>
-                                    </span>
-                                    </td>
-                                    <td>
-                                        <?=$turma['qt_alunos']?>
-                                    </td>
-                                    <td>
-                                        <?=$turma['pontuacao_turma']?>
+                                        <?=$aluno['pontuacao_aluno']?>
                                     </td>
                                     <td class="text-right">
                                         <div class="dropdown">
@@ -69,7 +42,7 @@
                                                 <i class="fas fa-ellipsis-v"></i>
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="<?=$base;?>/turma/visualizar/alunos/<?=$turma['id_turma']?>">Ver Alunos</a>
+                                                <a class="dropdown-item" href="<?=$base;?>/turma/visualizar/alunos/<?=$aluno['id_turma']?>">Ver Alunos</a>
                                                 <a class="dropdown-item" href="#">Registrar Atividade</a>
                                             </div>
                                         </div>

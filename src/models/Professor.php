@@ -39,4 +39,9 @@ class Professor
         }
         return $result;
     }
+
+    public static function retornaNomeProfessorPorTurma($id_turma)
+    {
+
+    }
 }
